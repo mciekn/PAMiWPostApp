@@ -10,7 +10,7 @@ class Package{
 
 @RestController
 @RequestMapping("package")
-public class WorldController {
+public class PackageController {
 
     private Package aPackage = new Package("Hello world");
 

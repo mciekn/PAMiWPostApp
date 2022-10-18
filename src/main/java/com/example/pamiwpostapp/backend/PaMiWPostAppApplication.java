@@ -1,4 +1,4 @@
-package com.example.pamiwpostapp;
+package com.example.pamiwpostapp.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

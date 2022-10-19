@@ -4,6 +4,7 @@ import com.example.pamiwpostapp.backend.entities.Package;
 import com.example.pamiwpostapp.backend.services.PackageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,6 +35,7 @@ public class PackageController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     com.example.pamiwpostapp.backend.entities.Package createPackage(@RequestBody com.example.pamiwpostapp.backend.entities.Package aPackage){
         log.debug("Create package: {}", aPackage);
         return packageService.save(aPackage);

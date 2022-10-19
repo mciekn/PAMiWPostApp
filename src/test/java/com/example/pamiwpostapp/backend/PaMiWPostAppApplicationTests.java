@@ -1,4 +1,4 @@
-package com.example.pamiwpostapp;
+package com.example.pamiwpostapp.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

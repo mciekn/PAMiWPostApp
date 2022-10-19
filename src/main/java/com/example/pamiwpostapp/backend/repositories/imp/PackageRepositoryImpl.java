@@ -26,7 +26,6 @@ public class PackageRepositoryImpl implements PackageRepository {
             aPackage.setId((maxId+1));
         }
         maxId = Math.max(maxId, aPackage.getId());
-
         packages.put(aPackage.getId(), aPackage);
         return aPackage;
     }

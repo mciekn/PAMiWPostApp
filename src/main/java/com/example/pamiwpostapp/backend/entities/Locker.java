@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
 @Table
 @Setter
@@ -15,24 +14,10 @@ import javax.persistence.Table;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Package {
-
-    enum State{
-        POSTED,
-        TRANSFERRED,
-        DELIVERED,
-        RECEIVED
-    }
-
+public class Locker {
     @Id
     @GeneratedValue
     Long id;
 
     String name;
-    String content;
-    Long sender_locker_id;
-    Long receiver_locker_id;
-    Long sender_id;
-    Long receiver_id;
-    State state;
 }

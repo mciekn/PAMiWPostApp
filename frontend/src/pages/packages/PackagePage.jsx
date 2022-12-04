@@ -14,7 +14,7 @@ export const PackagePage = () => {
     }, []);
 
     const remove = (id) => {
-        packagesApi.delete(id)
+        packageApi.delete(id)
             .then(() => {
                 setPackages((packages) => packages.filter((aPackage) => aPackage.id !== id));
             });

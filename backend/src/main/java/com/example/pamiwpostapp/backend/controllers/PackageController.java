@@ -12,7 +12,7 @@ import java.util.Collection;
 
 @Slf4j
 @RestController
-@RequestMapping(value = "parcels")
+@RequestMapping(value = "packages")
 @RequiredArgsConstructor
 
 public class PackageController {

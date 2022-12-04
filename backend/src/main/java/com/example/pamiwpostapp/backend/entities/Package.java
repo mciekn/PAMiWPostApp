@@ -26,13 +26,13 @@ public class Package {
 
     @Id
     @GeneratedValue
-    Long id;
+    private Long id;
 
-    String name;
-    String content;
-    Long sender_locker_id;
-    Long receiver_locker_id;
-    Long sender_id;
-    Long receiver_id;
-    State state;
+    private String name;
+    private String content;
+    private Long sender_locker_id;
+    private Long receiver_locker_id;
+    private Long sender_id;
+    private Long receiver_id;
+    private State state;
 }

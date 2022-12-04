@@ -8,11 +8,11 @@
         <version>2.7.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example</groupId>
-    <artifactId>PAMiWPostApp</artifactId>
+    <groupId>com.example.pamiwpostapp</groupId>
+    <artifactId>backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>PAMiWPostApp</name>
-    <description>PAMiWPostApp</description>
+    <name>backend</name>
+    <description>backend</description>
     <properties>
         <java.version>17</java.version>
     </properties>

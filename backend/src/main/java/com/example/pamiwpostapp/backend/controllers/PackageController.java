@@ -12,9 +12,7 @@ import java.util.Collection;
 
 @Slf4j
 @RestController
-@RequestMapping(value = "packages",
-    consumes = MediaType.APPLICATION_JSON_VALUE,
-    produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "packages")
 @RequiredArgsConstructor
 
 public class PackageController {

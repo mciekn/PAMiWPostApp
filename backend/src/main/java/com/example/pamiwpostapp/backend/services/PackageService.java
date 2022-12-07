@@ -36,7 +36,7 @@ public class PackageService {
 
     public Package update(Long id, Package aPackage){
         if(!Objects.equals(id, aPackage.getId())){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Id and parcel.id is not equal");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Id and package.id is not equal");
         }
         return packageRepository.save(aPackage);
     }

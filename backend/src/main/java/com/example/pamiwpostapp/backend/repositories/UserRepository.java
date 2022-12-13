@@ -1,17 +1,9 @@
 package com.example.pamiwpostapp.backend.repositories;
 
-import com.example.pamiwpostapp.backend.entities.User;
+import com.example.pamiwpostapp.backend.entities.PostUser;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Collection;
-import java.util.Optional;
 
-public interface UserRepository {
+public interface UserRepository  extends JpaRepository<PostUser, Long> {
 
-    Collection<User> findAll();
-
-    User save(User user);
-
-    Optional<User> findById(Long id);
-
-    void deleteById(Long id);
 }

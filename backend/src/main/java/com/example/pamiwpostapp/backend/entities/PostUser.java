@@ -14,10 +14,11 @@ import javax.persistence.Table;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class PostUser {
 
     @Id
     @GeneratedValue
     Long id;
+
     String username;
 }

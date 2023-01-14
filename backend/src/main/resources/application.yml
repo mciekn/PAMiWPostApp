@@ -1,6 +1,6 @@
 logging:
   level:
-    com.example.backend: DEBUG
+    com.example.pamiwpostapp.backend: DEBUG
 
 app:
   cors:

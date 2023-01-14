@@ -4,6 +4,7 @@ import {NavBar} from "./components/NavBar";
 import {Home} from "./pages/home/Home";
 import {PackagePage} from "./pages/packages/PackagePage";
 import {PackageForm} from "./pages/package/PackageForm";
+import {LockerPage} from "./pages/lockers/LockerPage";
 
 export default function App(){
     return (
@@ -12,6 +13,7 @@ export default function App(){
             <Routes>
                 <Route index element={<Home/>}/>
                 <Route path='/packages' element={<PackagePage/>}/>
+                <Route path='/lockers' element={<LockerPage/>}/>
                 <Route path='/packages/:packageId' element={<PackageForm/>}/>
             </Routes>
         </>

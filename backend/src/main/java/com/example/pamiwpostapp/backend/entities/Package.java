@@ -2,10 +2,7 @@ package com.example.pamiwpostapp.backend.entities;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Entity
@@ -17,7 +14,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 public class Package {
 
-    enum State{
+    enum State {
         POSTED,
         TRANSFERRED,
         DELIVERED,
@@ -30,9 +27,21 @@ public class Package {
 
     private String name;
     private String content;
-    private Long sender_locker_id;
-    private Long receiver_locker_id;
-    private Long sender_id;
-    private Long receiver_id;
+
+    @ManyToOne
+    private Locker senderLocker;
+
+
+    @ManyToOne
+    private Locker receiverLocker;
+
+
+    @ManyToOne
+    private PostUser sender;
+
+
+    @ManyToOne
+    private PostUser receiver;
+
     private State state;
 }

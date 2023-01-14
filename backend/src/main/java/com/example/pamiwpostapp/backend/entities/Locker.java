@@ -2,10 +2,7 @@ package com.example.pamiwpostapp.backend.entities;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table
@@ -16,7 +13,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 public class Locker {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     String name;

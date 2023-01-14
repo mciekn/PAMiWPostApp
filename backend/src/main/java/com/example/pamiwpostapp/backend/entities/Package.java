@@ -17,12 +17,6 @@ import javax.persistence.Table;
 @AllArgsConstructor
 public class Package {
 
-    enum State{
-        POSTED,
-        TRANSFERRED,
-        DELIVERED,
-        RECEIVED
-    }
 
     @Id
     @GeneratedValue
@@ -30,9 +24,9 @@ public class Package {
 
     private String name;
     private String content;
-    private Long sender_locker_id;
-    private Long receiver_locker_id;
-    private Long sender_id;
-    private Long receiver_id;
-    private State state;
+    private String sender_locker_id;
+    private String receiver_locker_id;
+    private String sender_id;
+    private String receiver_id;
+    private Integer state;
 }

@@ -2,8 +2,10 @@ import React, {useEffect, useState} from 'react';
 import {Link, useNavigate, useParams} from 'react-router-dom';
 import {Button, Container, Form, FormGroup, Input, Label} from 'reactstrap';
 import {packageApi} from "../../api/packageApi";
+import {useKeycloak} from "@react-keycloak/web";
 
 export const PackageForm = () => {
+    const {keycloak} = useKeycloak();
     const navigate = useNavigate();
     const {packageId} = useParams();
     const [aPackage, setPackage] = useState({
@@ -16,11 +18,12 @@ export const PackageForm = () => {
 
     useEffect(() => {
         if (packageId !== 'new') {
-            packageApi.getById(packageId)
+            packageApi.getById(packageId, keycloak.token)
                 .then((res) => {
                     setPackage(res.data);
                 });
         }
+        keycloak.updateToken()
     }, [packageId]);
 
     const handleChange = (event) => {
@@ -38,9 +41,9 @@ export const PackageForm = () => {
         event.preventDefault();
 
         if (aPackage.id) {
-            await packageApi.update(aPackage.id, aPackage)
+            await packageApi.update(aPackage.id, aPackage, keycloak.token)
         } else {
-            await packageApi.create(aPackage)
+            await packageApi.create(aPackage, keycloak.token)
         }
         navigate('/packages')
     }

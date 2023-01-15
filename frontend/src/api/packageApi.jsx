@@ -1,30 +1,41 @@
 import {backendApi} from "./backendApi";
+import {bearerAuth} from "./bearerAuth";
 
 const packageClient = backendApi('/packages')
 
 export const packageApi = {
-    getAll() {
+    getAll(token) {
         console.log('Fetching packages')
-        return packageClient.get('')
+        return packageClient.get('', {
+            headers: {'Authorization': bearerAuth(token)}
+        })
     },
 
-    getById(id) {
+    getById(id, token) {
         console.log('Get package', id)
-        return packageClient.get(`/${id}`)
+        return packageClient.get(`/${id}`, {
+            headers: {'Authorization': bearerAuth(token)}
+        })
     },
 
-    create(aPackage) {
+    create(aPackage, token) {
         console.log('Create package', aPackage)
-        return packageClient.post('', aPackage)
+        return packageClient.post('', aPackage, {
+            headers: {'Authorization': bearerAuth(token)}
+        })
     },
 
-    update(id, aPackage) {
+    update(id, aPackage, token) {
         console.log('Update package', id, aPackage)
-        return packageClient.put(`/${id}`, aPackage);
+        return packageClient.put(`/${id}`, aPackage, {
+            headers: {'Authorization': bearerAuth(token)}
+        });
     },
 
-    delete(id) {
+    delete(id, token) {
         console.log('Delete package', id)
-        return packageClient.delete(`/${id}`)
+        return packageClient.delete(`/${id}`, {
+            headers: {'Authorization': bearerAuth(token)}
+        })
     }
 }

@@ -2,19 +2,21 @@ import React, {useEffect, useState} from 'react';
 import {Button, ButtonGroup, Container, Table} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import {packageApi} from "../../api/packageApi";
+import {useKeycloak} from "@react-keycloak/web";
 
 export const PackagePage = () => {
+    const {keycloak} = useKeycloak();
     const [packages, setPackages] = useState([]);
 
     useEffect(() => {
-        packageApi.getAll()
+        packageApi.getAll(keycloak.token)
             .then((res) => {
                 setPackages(res.data);
             })
     }, []);
 
     const remove = (id) => {
-        packageApi.delete(id)
+        packageApi.delete(id, keycloak.token)
             .then(() => {
                 setPackages((packages) => packages.filter((aPackage) => aPackage.id !== id));
             });

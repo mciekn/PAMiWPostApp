@@ -20,13 +20,16 @@ export const NavBar = () => {
         navigate('/')
         keycloak.logout()
     }
-
     return (
         <Navbar color="dark" dark expand="md">
             <Nav>
                 <NavbarBrand tag={NavLink} to="/" style={style}>Home</NavbarBrand>
-                <NavbarBrand tag={NavLink} to="/packages" style={style}>Packages</NavbarBrand>
-                <NavbarBrand tag={NavLink} to="/lockers" style={style}>Lockers</NavbarBrand>
+                {keycloak.authenticated && keycloak.idTokenParsed.preferred_username != "admin" && (
+                    <NavbarBrand tag={NavLink} to="/packages" style={style}>Packages</NavbarBrand>
+                )}
+                {keycloak.authenticated && keycloak.idTokenParsed.preferred_username == "admin" && (
+                    <NavbarBrand tag={NavLink} to="/lockers" style={style}>Lockers</NavbarBrand>
+                )}
                 {!keycloak.authenticated && (
                     <NavbarBrand tag={NavLink} to="/login" onClick={handleLogIn}>
                         Login

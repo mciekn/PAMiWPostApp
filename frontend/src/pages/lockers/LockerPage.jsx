@@ -2,13 +2,15 @@ import React, {useEffect, useState} from 'react';
 import {Button, ButtonGroup, Container, Form, FormGroup, Input, Label, Table} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import {packageApi} from "../../api/packageApi";
+import {useKeycloak} from "@react-keycloak/web";
 
 export const LockerPage = () => {
     const [packages, setPackages] = useState([]);
     const [locker, setLocker] = useState("");
+    const {keycloak} = useKeycloak();
 
     useEffect(() => {
-        packageApi.getAll()
+        packageApi.getAll(keycloak.token)
             .then((res) => {
                 setPackages(res.data);
             })
@@ -27,7 +29,7 @@ export const LockerPage = () => {
     }
 
     function onClear(){
-        packageApi.getAll()
+        packageApi.getAll(keycloak.token)
             .then((res) => {
                 setPackages(res.data);
             })
@@ -35,11 +37,12 @@ export const LockerPage = () => {
 
     function filter(){
         console.log("setting package from lockers: "+locker)
-        setPackages(packages.filter((aPackage) => aPackage.sender_locker_id === locker));
+        setPackages(packages.filter((aPackage) => ((aPackage.sender_locker_id === locker && aPackage.state == "0") ||
+            (aPackage.receiver_locker_id === locker && aPackage.state == "2"))));
     }
 
     const remove = (id) => {
-        packageApi.delete(id)
+        packageApi.delete(id, keycloak.token)
             .then(() => {
                 setPackages((packages) => packages.filter((aPackage) => aPackage.id !== id));
             });

@@ -28,7 +28,7 @@ public class PackageController {
         log.debug("Find all packages");
         return packageService.findAll()
                 .stream()
-                .filter(p -> p.getSender_id().equals(principal.getSubject()) || p.getReceiver_id().equals(principal.getClaim("preferred_username")) || principal.getClaim("preffered_username").equals("admin"))
+                .filter(p -> p.getSender_id().equals(principal.getSubject()) || p.getReceiver_id().equals(principal.getClaim("preferred_username")) || principal.getClaim("preferred_username").equals("admin"))
                 .collect(Collectors.toList());
     }
 
@@ -38,7 +38,7 @@ public class PackageController {
         log.debug("Find package with id: {}", id);
         if(packageService.findById(id).getSender_id().equals(principal.getSubject())
                 || packageService.findById(id).getReceiver_id().equals(principal.getClaim("preferred_username"))
-                || principal.getClaim("preffered_username").equals("admin")){
+                || principal.getClaim("preferred_username").equals("admin")){
             return packageService.findById(id);
         }
         else{
@@ -60,7 +60,7 @@ public class PackageController {
         log.debug("Find package with id: {}, with package {}", id, aPackage);
         if(packageService.findById(id).getSender_id().equals(principal.getSubject())
                 || packageService.findById(id).getReceiver_id().equals(principal.getClaim("preferred_username"))
-                || principal.getClaim("preffered_username").equals("admin")){
+                || principal.getClaim("preferred_username").equals("admin")){
             return packageService.update(id, aPackage);
         }
         else{
@@ -73,7 +73,7 @@ public class PackageController {
         log.debug("Delete package with id: {}", id);
         if(packageService.findById(id).getSender_id().equals(principal.getSubject())
                 || packageService.findById(id).getReceiver_id().equals(principal.getClaim("preferred_username"))
-                || principal.getClaim("preffered_username").equals("admin")){
+                || principal.getClaim("preferred_username").equals("admin")){
             packageService.deleteById(id);
         }
         else{
